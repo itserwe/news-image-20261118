@@ -14,7 +14,8 @@ import os
 import shutil
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+# An empty MAKEFUN_OUTPUT_DIR falls back to /output.
+OUT = os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output"
 
 os.makedirs(OUT, exist_ok=True)
 shutil.copyfile(os.path.join(HERE, "entry.png"),
